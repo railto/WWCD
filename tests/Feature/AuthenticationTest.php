@@ -38,12 +38,13 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $this->post('/login', [
+        $response = $this->post('/login', [
             'email' => $user->email,
             'password' => 'password',
         ]);
 
         $this->assertGuest();
+        $response->assertRedirect(route('account.inactive'));
     }
 
     /** @test */

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Exceptions\AccountInactiveException;
 use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
@@ -35,14 +36,7 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    /**
-     * Attempt to authenticate the request's credentials.
-     *
-     * @return void
-     *
-     * @throws ValidationException
-     */
-    public function authenticate()
+    public function authenticate(): bool
     {
         $this->ensureIsNotRateLimited();
 
@@ -57,14 +51,14 @@ class LoginRequest extends FormRequest
         $user = User::whereEmail($this->get('email'))->first();
 
         if ($user && !$user->activated_at) {
-            throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
-            ]);
+            throw new AccountInactiveException;
         }
 
         Auth::attempt($this->only('email', 'password'), $this->filled('remember'));
 
         RateLimiter::clear($this->throttleKey());
+
+        return true;
     }
 
     /**
