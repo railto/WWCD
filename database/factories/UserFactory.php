@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -41,6 +42,21 @@ class UserFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'email_verified_at' => null,
+            ];
+        });
+    }
+
+    /**
+     * Creates an activated user
+     *
+     * @return UserFactory
+     */
+    public function activated(): UserFactory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'activated_at' => Carbon::now(),
+                'activated_by' => 1
             ];
         });
     }
