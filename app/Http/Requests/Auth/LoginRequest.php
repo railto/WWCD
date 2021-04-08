@@ -56,7 +56,7 @@ class LoginRequest extends FormRequest
 
         $user = User::whereEmail($this->get('email'))->first();
 
-        if (!$user->activated_at) {
+        if ($user && !$user->activated_at) {
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
             ]);
