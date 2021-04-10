@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Search\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,5 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/searches', [SearchController::class, 'list'])->name('searches.list');
+Route::get('/searches/{search}', [SearchController::class, 'show'])->name('searches.show');
 
 require __DIR__.'/auth.php';
