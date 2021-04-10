@@ -3,22 +3,13 @@
 use App\Http\Controllers\Search\SearchController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::redirect('/', '/searches');
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('/searches', [SearchController::class, 'list'])->name('searches.list');
-Route::get('/searches/{search}', [SearchController::class, 'show'])->name('searches.show');
+Route::middleware('auth')->group(function () {
+    Route::prefix('/searches')->name('searches.')->group(function () {
+        Route::get('/', [SearchController::class, 'list'])->name('list');
+        Route::get('/{search}', [SearchController::class, 'show'])->name('show');
+    });
+});
 
 require __DIR__.'/auth.php';
