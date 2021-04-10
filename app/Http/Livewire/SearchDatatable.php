@@ -14,12 +14,12 @@ class SearchDatatable extends LivewireDatatable
     public function columns(): array
     {
         return [
-            Column::name('location')->label('Location')->linkTo(Search::class, 3)->callback(['location', 'id'], function ($location, $id) {
+            Column::callback(['location', 'id'], function ($location, $id) {
                 return view('datatables::link', [
                     'href' => route('searches.show', $id),
                     'slot' => $location
                 ]);
-            }),
+            })->label('Location')->searchable(),
             DateColumn::name('start')->format('d/m/Y H:i')->label('Start')->defaultSort('desc'),
             DateColumn::name('end')->format('d/m/Y H:i')->label('End'),
         ];
