@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Search;
 
 use App\Models\Search;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\DateColumn;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 
-class SearchDatatable extends LivewireDatatable
+class ListSearches extends LivewireDatatable
 {
     public $model = Search::class;
 

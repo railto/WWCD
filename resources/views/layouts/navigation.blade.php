@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('searches.list')" :active="request()->routeIs('searches.list')">
                         Searches
                     </x-nav-link>
+                    <x-nav-link :href="route('searches.create')" :active="request()->routeIs('searches.create')">
+                        Create New Search
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -65,6 +68,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('searches.list')" :active="request()->routeIs('searches.list')">
                 Searches
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('searches.create')" :active="request()->routeIs('searches.create')">
+                Create New Search
             </x-responsive-nav-link>
         </div>
 

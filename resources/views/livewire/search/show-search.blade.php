@@ -1,7 +1,7 @@
-<x-app-layout>
+<div>
     <x-tabs active="Search Details">
         <x-tab name="Search Details">
-            <x-search-details :search="$search" />
+            <x-search.search-details :search="$search" />
         </x-tab>
 
         <x-tab name="Search Teams">
@@ -20,4 +20,4 @@
             Search Log
         </x-tab>
     </x-tabs>
-</x-app-layout>
+</div>

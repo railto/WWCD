@@ -1,5 +1,5 @@
 <x-app-layout>
-    <livewire:search-datatable
+    <livewire:search.list-searches
         exportable="all"
     />
 </x-app-layout>
