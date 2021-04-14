@@ -8,30 +8,24 @@
             Incident Type
         </th>
         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Start Date
+            Start Date / Time
         </th>
         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Start Time
-        </th>
-        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            End Time
+            End Date / Time
         </th>
         </thead>
         <tbody>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td class="px-6 py-4 whitespace-nowrap text-sm">
             {{ $search->location }}
         </td>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            {{ $search->type }}
+        <td class="px-6 py-4 whitespace-nowrap text-sm">
+            {{ ucfirst($search->type) }}
         </td>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            {{ Carbon\Carbon::parse($search->start)->format('d/m/Y') }}
+        <td class="px-6 py-4 whitespace-nowrap text-sm">
+            {{ Carbon\Carbon::parse($search->start)->format('d/m/Y H:i') }}
         </td>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            {{ Carbon\Carbon::parse($search->start)->format('H:i') }}
-        </td>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-            {{ $search->end ? Carbon\Carbon::parse($search->end)->format('H:i') : ''}}
+        <td class="px-6 py-4 whitespace-nowrap text-sm">
+            {{ $search->end ? Carbon\Carbon::parse($search->end)->format('d/m/Y H:i') : ''}}
         </td>
         </tbody>
     </table>
@@ -51,16 +45,16 @@
         </th>
         </thead>
         <tbody>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td  class="px-6 py-4 whitespace-nowrap text-sm">
             {{ $search->officer_in_charge }}
         </td>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td  class="px-6 py-4 whitespace-nowrap text-sm">
             {{ $search->safety_officer }}
         </td>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td  class="px-6 py-4 whitespace-nowrap text-sm">
             {{ $search->search_manager }}
         </td>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td  class="px-6 py-4 whitespace-nowrap text-sm">
             {{ $search->section_leader }}
         </td>
         </tbody>
@@ -75,10 +69,10 @@
         </th>
         </thead>
         <tbody>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td  class="px-6 py-4 whitespace-nowrap text-sm">
             {{ $search->radio_operator }}
         </td>
-        <td  class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+        <td  class="px-6 py-4 whitespace-nowrap text-sm">
             {{ $search->scribe }}
         </td>
         </tbody>

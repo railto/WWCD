@@ -5,7 +5,7 @@
         </x-tab>
 
         <x-tab name="Search Teams">
-            Search Teams
+            <livewire:search.teams.list-search-teams :search="$search" />
         </x-tab>
 
         <x-tab name="Radio Assignments">
