@@ -1,7 +1,7 @@
 <div>
     <x-tabs active="Search Details">
         <x-tab name="Search Details">
-            <x-search.search-details :search="$search" />
+            <livewire:search.search-details :search="$search" />
         </x-tab>
 
         <x-tab name="Search Teams">

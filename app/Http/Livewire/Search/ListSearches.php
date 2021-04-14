@@ -10,6 +10,7 @@ use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 class ListSearches extends LivewireDatatable
 {
     public $model = Search::class;
+    public $exportable = true;
 
     public function columns(): array
     {
