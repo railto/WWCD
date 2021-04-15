@@ -5,7 +5,7 @@ use App\Http\Livewire\Search\ListSearches;
 use App\Http\Livewire\Search\ShowSearch;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/searches');
+Route::redirect('/', '/search');
 
 Route::middleware('auth')->group(function () {
     Route::prefix('/search')->name('searches.')->group(function () {
