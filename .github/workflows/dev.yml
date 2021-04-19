@@ -1,0 +1,66 @@
+name: 'Development Release'
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: wwcd_test
+          ports:
+            - 3306
+          options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: composer install --prefer-dist --no-interaction
+
+      - name: Copy Env File
+        run: cp .env.example .env
+
+      - name: Generate App Key
+        run: php artisan key:generate
+
+      - name: Install NPM dependencies
+        run: npm ci
+
+      - name: Compile assets
+        run: npm run production
+
+      - name: Execute tests
+        run: vendor/bin/phpunit --verbose
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+
+      - name: Deploy
+        run: curl ${{ secrets.DEV_FORGE_HOOK }}
+
+      - name: Create Sentry.io release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: railto
+          SENTRY_PROJECT: wwcd-dev
+        with:
+          version: ${{ github.sha }}
+          environment: staging
+          set_commits: "skip"
