@@ -36,9 +36,9 @@ class SearchTeams extends Component
             'responder_3' => $this->responder_3,
         ]);
 
-        $this->showCreateSearchTeamModal = false;
         $this->searchTeams = $this->search->searchTeams()->get();
         $this->resetCreateSearchTeamForm();
+        $this->showCreateSearchTeamModal = false;
     }
 
     public function resetCreateSearchTeamForm()
