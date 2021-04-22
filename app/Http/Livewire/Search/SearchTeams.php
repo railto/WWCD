@@ -20,12 +20,14 @@ class SearchTeams extends Component
     public function storeSearchTeam()
     {
         $this->validate([
-            'name' => 'string|required',
-            'team_leader' => 'string|required',
-            'medic' => 'string|required',
+            'name' => 'required',
+            'team_leader' => 'required',
+            'medic' => 'required',
         ]);
 
-        $searchTeam = SearchTeam::make([
+        SearchTeam::create([
+            'search_id' => $this->search->id,
+            'created_by' => auth()->user()->id,
             'name' => $this->name,
             'team_leader' => $this->team_leader,
             'medic' => $this->medic,
@@ -33,10 +35,6 @@ class SearchTeams extends Component
             'responder_2' => $this->responder_2,
             'responder_3' => $this->responder_3,
         ]);
-
-        $searchTeam->user()->associate(auth()->user());
-        $searchTeam->search()->associate($this->search->id);
-        $searchTeam->save();
 
         $this->showCreateSearchTeamModal = false;
         $this->searchTeams = $this->search->searchTeams()->get();
