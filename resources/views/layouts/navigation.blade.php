@@ -15,9 +15,11 @@
                     <x-nav-link :href="route('searches.list')" :active="request()->routeIs('searches.list')">
                         Searches
                     </x-nav-link>
-                    <x-nav-link :href="route('searches.create')" :active="request()->routeIs('searches.create')">
-                        Create New Search
-                    </x-nav-link>
+                    @feature('create search')
+                        <x-nav-link :href="route('searches.create')" :active="request()->routeIs('searches.create')">
+                            Create New Search
+                        </x-nav-link>
+                    @endfeature
                 </div>
             </div>
 
