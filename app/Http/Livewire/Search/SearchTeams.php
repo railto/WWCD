@@ -49,6 +49,8 @@ class SearchTeams extends Component
         $this->responder_1 = null;
         $this->responder_2 = null;
         $this->responder_3 = null;
+
+        $this->errorBag = null;
     }
 
     public function mount()

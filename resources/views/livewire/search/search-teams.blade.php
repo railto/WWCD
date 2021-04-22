@@ -106,7 +106,11 @@
 
         <x-slot name="footer">
             <x-button class="bg-gray-400 hover:bg-gray-500" wire:click="$set('showCreateSearchTeamModal', false)">
-                Cancel
+                Close
+            </x-button>
+
+            <x-button class="bg-red-400 hover:bg-red-500" wire:click="resetCreateSearchTeamForm">
+                Reset Form
             </x-button>
 
             <x-button wire:click="storeSearchTeam" class="bg-green-400 hover:bg-green-500">
