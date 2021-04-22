@@ -10,12 +10,15 @@ class SearchTeam extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'search_id', 'name', 'team_leader', 'medic', 'responder_1', 'responder_2', 'responder_3',
-    ];
+    protected $guarded = [];
 
     public function search(): BelongsTo
     {
         return $this->belongsTo(Search::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }
