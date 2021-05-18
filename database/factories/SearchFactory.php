@@ -26,7 +26,7 @@ class SearchFactory extends Factory
             'created_by' => User::factory(),
             'location' => $this->faker->streetName(),
             'start' => $this->faker->dateTimeThisYear(),
-            'type' => 'training',
+            'type' => 'exercise',
             'officer_in_charge' => $this->faker->name(),
             'search_manager' => $this->faker->name(),
             'safety_officer' => $this->faker->name(),
