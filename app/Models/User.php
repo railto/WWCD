@@ -10,7 +10,7 @@ use JustSteveKing\Laravel\FeatureFlags\Concerns\HasFeatures;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasFeatures;
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.

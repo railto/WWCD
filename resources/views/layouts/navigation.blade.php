@@ -15,11 +15,11 @@
                     <x-nav-link :href="route('searches.list')" :active="request()->routeIs('searches.list')">
                         Searches
                     </x-nav-link>
-                    @feature('create search')
+                    @if(Auth::user()->role === 'admin')
                         <x-nav-link :href="route('searches.create')" :active="request()->routeIs('searches.create')">
                             Create New Search
                         </x-nav-link>
-                    @endfeature
+                    @endif
                 </div>
             </div>
 

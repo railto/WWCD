@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "564ac5f41e9548432f8fc7fb2b677a0c",
+    "content-hash": "b98a9bdc0c944660b5efc9dedf527495",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1088,76 +1088,6 @@
                 "source": "https://github.com/Jean85/pretty-package-versions/tree/2.0.3"
             },
             "time": "2021-02-22T10:52:38+00:00"
-        },
-        {
-            "name": "juststeveking/laravel-feature-flags",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/JustSteveKing/laravel-feature-flags.git",
-                "reference": "3ba14f37d3b596043983ec70f0efcbb9174d12e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/JustSteveKing/laravel-feature-flags/zipball/3ba14f37d3b596043983ec70f0efcbb9174d12e2",
-                "reference": "3ba14f37d3b596043983ec70f0efcbb9174d12e2",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^8.0",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "nunomaduro/collision": "^5.3",
-                "orchestra/testbench": "^6.15",
-                "phpunit/phpunit": "^9.3",
-                "vimeo/psalm": "^4.4"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "JustSteveKing\\Laravel\\FeatureFlags\\FeatureFlagsServiceProvider"
-                    ],
-                    "aliases": {
-                        "FeatureFlags": "JustSteveKing\\Laravel\\FeatureFlags\\FeatureFlagsFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JustSteveKing\\Laravel\\FeatureFlags\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Steve McDougall",
-                    "email": "juststevemcd@gmail.com"
-                }
-            ],
-            "description": "A simple to use Feature Flags package for Laravel",
-            "homepage": "https://github.com/JustSteveKing/laravel-feature-flags",
-            "keywords": [
-                "JustSteveKing",
-                "laravel",
-                "laravel-feature-flags"
-            ],
-            "support": {
-                "issues": "https://github.com/JustSteveKing/laravel-feature-flags/issues",
-                "source": "https://github.com/JustSteveKing/laravel-feature-flags/tree/main"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/JustSteveKing",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-04-19T22:04:06+00:00"
         },
         {
             "name": "laravel/framework",
@@ -10809,7 +10739,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "juststeveking/laravel-feature-flags": 20,
         "mediconesystems/livewire-datatables": 20
     },
     "prefer-stable": true,
