@@ -2,23 +2,36 @@
 
 namespace App\Http\Livewire\Search;
 
-use App\Models\SearchTeam;
+use App\Models\Search;
 use Livewire\Component;
+use App\Models\SearchTeam;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
 
 class SearchTeams extends Component
 {
-    public $search;
-    public $searchTeams;
-    public $showCreateSearchTeamModal = false;
-    public $name;
-    public $team_leader;
-    public $medic;
-    public $responder_1;
-    public $responder_2;
-    public $responder_3;
+    use AuthorizesRequests;
 
-    public function storeSearchTeam()
+    public Search $search;
+    public Collection $searchTeams;
+    public bool $showCreateSearchTeamModal = false;
+    public string|null $name = null;
+    public string|null $team_leader = null;
+    public string|null $medic = null;
+    public string|null $responder_1 = null;
+    public string|null $responder_2 = null;
+    public string|null $responder_3 = null;
+
+    /**
+     * @throws AuthorizationException
+     */
+    public function storeSearchTeam(): void
     {
+        $this->authorize('create', SearchTeam::class);
+
         $this->validate([
             'name' => 'required',
             'team_leader' => 'required',
@@ -41,7 +54,7 @@ class SearchTeams extends Component
         $this->showCreateSearchTeamModal = false;
     }
 
-    public function resetCreateSearchTeamForm()
+    public function resetCreateSearchTeamForm(): void
     {
         $this->name = null;
         $this->team_leader = null;
@@ -58,8 +71,13 @@ class SearchTeams extends Component
         $this->searchTeams = $this->search->searchTeams;
     }
 
-    public function render()
+    /**
+     * @throws AuthorizationException
+     */
+    public function render(): View
     {
+        $this->authorize('viewAny', SearchTeam::class);
+
         return view('livewire.search.search-teams');
     }
 }
