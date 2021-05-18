@@ -1,11 +1,17 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 module.exports = {
+    mode: 'jit',
     purge: [
-        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
-        './storage/framework/views/*.php',
-        './resources/views/**/*.blade.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
     ],
-
-    plugins: [require('@tailwindcss/forms')],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+        extend: {},
+    },
+    variants: {
+        extend: {},
+    },
+    plugins: [
+        require('@tailwindcss/forms'),
+    ],
 };
