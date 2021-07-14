@@ -27,9 +27,6 @@ class CreateSearch extends Component
     public string $scribe = 'default';
     public $users;
 
-    /**
-     * @throws AuthorizationException
-     */
     public function storeSearch(): \Illuminate\Http\RedirectResponse
     {
         $this->authorize('create', Search::class);
@@ -69,9 +66,6 @@ class CreateSearch extends Component
         $this->users = User::all();
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function render(): View
     {
         $this->authorize('create', Search::class);

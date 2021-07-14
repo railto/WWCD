@@ -24,9 +24,6 @@ class SearchTeams extends Component
     public string|null $responder_2 = null;
     public string|null $responder_3 = null;
 
-    /**
-     * @throws AuthorizationException
-     */
     public function storeSearchTeam(): void
     {
         $this->authorize('create', SearchTeam::class);
@@ -70,9 +67,6 @@ class SearchTeams extends Component
         $this->searchTeams = $this->search->searchTeams;
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function render(): View
     {
         $this->authorize('viewAny', SearchTeam::class);
