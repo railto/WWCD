@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-
 class SearchTeams extends Component
 {
     use AuthorizesRequests;
@@ -25,9 +24,6 @@ class SearchTeams extends Component
     public string|null $responder_2 = null;
     public string|null $responder_3 = null;
 
-    /**
-     * @throws AuthorizationException
-     */
     public function storeSearchTeam(): void
     {
         $this->authorize('create', SearchTeam::class);
@@ -66,14 +62,11 @@ class SearchTeams extends Component
         $this->errorBag = null;
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->searchTeams = $this->search->searchTeams;
     }
 
-    /**
-     * @throws AuthorizationException
-     */
     public function render(): View
     {
         $this->authorize('viewAny', SearchTeam::class);

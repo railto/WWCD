@@ -8,9 +8,9 @@ use Livewire\Component;
 
 class ShowSearch extends Component
 {
-    public $search;
+    public ?\App\Models\Search $search = null;
 
-    public function mount(Search $search)
+    public function mount(Search $search): void
     {
         $this->search = $search;
     }

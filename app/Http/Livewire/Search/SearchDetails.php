@@ -8,7 +8,7 @@ class SearchDetails extends Component
 {
     public $search;
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         return view('livewire.search.search-details');
     }

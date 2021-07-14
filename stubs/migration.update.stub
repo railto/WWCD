@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('phone');
-            $table->string('rank')->default('Volunteer');
-            $table->string('first_aid')->default('CFR');
-            $table->string('role')->default('read');
+        Schema::table('{{ table }}', function (Blueprint $table) {
+            //
         });
     }
 };
