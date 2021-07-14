@@ -59,4 +59,13 @@ class UserFactory extends Factory
             ];
         });
     }
+
+    public function read(): UserFactory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role' => 'read',
+            ];
+        });
+    }
 }
