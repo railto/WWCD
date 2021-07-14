@@ -51,7 +51,7 @@ class LoginRequest extends FormRequest
         $user = User::whereEmail($this->get('email'))->first();
 
         if ($user && !$user->activated_at) {
-            throw new AccountInactiveException;
+            throw new AccountInactiveException();
         }
 
         Auth::attempt($this->only('email', 'password'), $this->filled('remember'));
@@ -93,6 +93,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey()
     {
-        return Str::lower($this->input('email')).'|'.$this->ip();
+        return Str::lower($this->input('email')) . '|' . $this->ip();
     }
 }
