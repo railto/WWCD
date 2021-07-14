@@ -18,19 +18,19 @@ class CreateSearch extends Component
 
     public $location;
     public $start;
-    public $type = 'default';
-    public $officer_in_charge = 'default';
-    public $search_manager = 'default';
-    public $safety_officer = 'default';
-    public $section_leader = 'default';
-    public $radio_operator = 'default';
-    public $scribe = 'default';
+    public string $type = 'default';
+    public string $officer_in_charge = 'default';
+    public string $search_manager = 'default';
+    public string $safety_officer = 'default';
+    public string $section_leader = 'default';
+    public string $radio_operator = 'default';
+    public string $scribe = 'default';
     public $users;
 
     /**
      * @throws AuthorizationException
      */
-    public function storeSearch(): RedirectResponse|Redirector
+    public function storeSearch(): \Illuminate\Http\RedirectResponse
     {
         $this->authorize('create', Search::class);
 
@@ -64,13 +64,12 @@ class CreateSearch extends Component
         return redirect()->route('searches.show', ['search' => $search->id]);
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->users = User::all();
     }
 
     /**
-     * @return View
      * @throws AuthorizationException
      */
     public function render(): View

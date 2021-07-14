@@ -8,10 +8,8 @@ class GuestLayout extends Component
 {
     /**
      * Get the view / contents that represents the component.
-     *
-     * @return \Illuminate\View\View
      */
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         return view('layouts.guest');
     }

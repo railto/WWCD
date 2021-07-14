@@ -65,7 +65,7 @@ class SearchTeams extends Component
         $this->errorBag = null;
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->searchTeams = $this->search->searchTeams;
     }
