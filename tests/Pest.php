@@ -12,6 +12,8 @@
 */
 
 uses(Tests\TestCase::class)->in('Feature');
+uses()->group('search')->in('Feature/Search');
+uses()->group('auth')->in('Feature/Auth');
 
 /*
 |--------------------------------------------------------------------------
