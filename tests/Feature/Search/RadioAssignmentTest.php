@@ -23,10 +23,12 @@ test('a user with write permissions can add a radio assignment', function () {
     $search = Search::factory()->create();
 
     Livewire::test(RadioAssignments::class, ['search' => $search])
+        ->assertDontSee('WW1')
         ->set('call_sign', 'WW1')
         ->set('tetra_number', 53581)
         ->set('name', 'Whiskey One')
-        ->call('storeRadioAssignment');
+        ->call('storeRadioAssignment')
+        ->assertSee('WW1');
 
     $this->assertDatabaseHas('search_radio_assignments', ['name' => 'Whiskey One']);
 });
