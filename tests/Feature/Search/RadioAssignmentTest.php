@@ -32,3 +32,18 @@ test('a user with write permissions can add a radio assignment', function () {
 
     expect($search->radioAssignments()->first()->name)->toBe('Whiskey One');
 });
+
+test('a user with read only permissions can not add a radio assignment', function () {
+    $this->actingAs(User::factory()->read()->activated()->create());
+    $search = Search::factory()->create();
+
+    Livewire::test(RadioAssignments::class, ['search' => $search])
+        ->assertDontSee('WW1')
+        ->set('call_sign', 'WW1')
+        ->set('tetra_number', 53581)
+        ->set('name', 'Whiskey One')
+        ->call('storeRadioAssignment')
+        ->assertDontSee('WW1');
+
+    expect($search->radioAssignments()->count())->toBe(0);
+});

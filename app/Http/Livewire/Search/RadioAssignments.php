@@ -7,9 +7,12 @@ use Livewire\Component;
 use Illuminate\Contracts\View\View;
 use App\Models\SearchRadioAssignment;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class RadioAssignments extends Component
 {
+    use AuthorizesRequests;
+
     public Search $search;
     public Collection $radioAssignments;
     public bool $showCreateRadioAssignmentModal = false;
@@ -19,6 +22,8 @@ class RadioAssignments extends Component
 
     public function storeRadioAssignment(): void
     {
+        $this->authorize('create', SearchRadioAssignment::class);
+
         $this->validate([
             'name' => 'required',
             'call_sign' => 'required',
@@ -53,6 +58,8 @@ class RadioAssignments extends Component
 
     public function render(): View
     {
+        $this->authorize('viewAny', SearchRadioAssignment::class);
+
         return view('livewire.search.radio-assignments');
     }
 }
