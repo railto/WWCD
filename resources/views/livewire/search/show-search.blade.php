@@ -9,7 +9,7 @@
         </x-tab>
 
         <x-tab name="Radio Assignments">
-            Radio Assignments
+            <livewire:search.radio-assignments :search="$search" />
         </x-tab>
 
         <x-tab name="Comms Log">

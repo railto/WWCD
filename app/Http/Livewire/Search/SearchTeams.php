@@ -7,7 +7,6 @@ use Livewire\Component;
 use App\Models\SearchTeam;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class SearchTeams extends Component
