@@ -7,7 +7,7 @@ use App\Models\Search;
 use App\Http\Livewire\Search\RadioAssignments;
 
 test('a user with write permissions can open the modal to create a new radio assignment', function () {
-    $this->actingAs(User::factory()->read()->activated()->create());
+    $this->actingAs(User::factory()->write()->activated()->create());
     $search = Search::factory()->create();
 
     Livewire::test(RadioAssignments::class, ['search' => $search])
@@ -30,5 +30,5 @@ test('a user with write permissions can add a radio assignment', function () {
         ->call('storeRadioAssignment')
         ->assertSee('WW1');
 
-    $this->assertDatabaseHas('search_radio_assignments', ['name' => 'Whiskey One']);
+    expect($search->radioAssignments()->first()->name)->toBe('Whiskey One');
 });

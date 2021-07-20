@@ -20,7 +20,7 @@ test('a user with write permissions can add a search team', function () {
         ->set('responder_3', 'Responder 3')
         ->call('storeSearchTeam');
 
-    $this->assertDatabaseHas('search_teams', ['name' => 'Team 1']);
+    expect($search->searchTeams()->first()->name)->toBe('Team 1');
 });
 
 test('a user with read only permissions can not add a search team', function () {
@@ -36,5 +36,5 @@ test('a user with read only permissions can not add a search team', function () 
         ->set('responder_3', 'Responder 3')
         ->call('storeSearchTeam');
 
-    $this->assertDatabaseMissing('search_teams', ['name' => 'Team 1']);
+    expect($search->searchTeams()->count())->toBe(0);
 });

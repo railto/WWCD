@@ -1,5 +1,7 @@
 <div>
-    <x-button class="bg-green-400 hover:bg-green-500" wire:click="$set('showCreateRadioAssignmentModal', true)">Add Radio Assignment</x-button>
+    @if (in_array(auth()->user()->role, ['write', 'admin']))
+        <x-button class="bg-green-400 hover:bg-green-500" wire:click="$set('showCreateRadioAssignmentModal', true)">Add Radio Assignment</x-button>
+    @endif
 
     <table class="min-w-full divide-y divide-gray-200">
         <thead>
