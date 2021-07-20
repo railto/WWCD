@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Search;
 use App\Models\SearchTeam;
 use App\Policies\SearchPolicy;
+use App\Models\SearchCommsLog;
+use App\Policies\CommsLogPolicy;
 use App\Policies\SearchTeamPolicy;
 use App\Models\SearchRadioAssignment;
 use App\Policies\RadioAssignmentPolicy;
@@ -16,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
         Search::class => SearchPolicy::class,
         SearchTeam::class => SearchTeamPolicy::class,
         SearchRadioAssignment::class => RadioAssignmentPolicy::class,
+        SearchCommsLog::class => CommsLogPolicy::class,
     ];
 
     public function boot(): void

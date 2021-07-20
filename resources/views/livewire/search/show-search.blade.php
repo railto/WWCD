@@ -13,7 +13,7 @@
         </x-tab>
 
         <x-tab name="Comms Log">
-            Comms Log
+            <livewire:search.comms-log :search="$search" />
         </x-tab>
 
         <x-tab name="Search Log">
